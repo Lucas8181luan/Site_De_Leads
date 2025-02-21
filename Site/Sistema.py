@@ -16,6 +16,12 @@ def home():
         div[id="inputs"] {
             text-align: center;
         }
+        img[id="img1"] {
+            margin-left: -10%;
+        }
+        img[id="img2"] {
+            transform: translateY(-50%);
+        }
         input[id="nome"] {
             height: 50px;
             width: 500px;
@@ -37,12 +43,20 @@ def home():
             border-radius: 10px;
             padding-left: 20px;
         }
+        label[id="DDD"] {
+            margin-right: 346px;
+            color: rgb(29, 77, 99);
+        }
         input[id="telefone"] {
             height: 50px;
             width: 500px;
             font-size: 15px;
             border-radius: 10px;
             padding-left: 20px;
+        }
+        label[id="DataDeNascimento"] {
+            margin-right: 260px;
+            color: rgb(29, 77, 99);
         }
         input[id="data de nascimento"] {
             height: 50px;
@@ -51,29 +65,8 @@ def home():
             border-radius: 10px;
             padding-left: 20px;
         }
-        select[id="curso escolhido"] {
-            height: 50px;
-            width: 525px;
-            font-size: 15px;
-            border-radius: 10px;
-            padding-left: 20px;
-        }
-        select[id="horário de estudo"] {
-            height: 50px;
-            width: 525px;
-            font-size: 15px;
-            border-radius: 10px;
-            padding-left: 20px;
-        }
-        input[id="cep"] {
-            height: 50px;
-            width: 500px;
-            font-size: 15px;
-            border-radius: 10px;
-            padding-left: 20px;
-        }
-        select[id="bairro"] {
-            height: 50px;
+        select[id="sexo"] {
+            height: 54px;
             width: 525px;
             font-size: 15px;
             border-radius: 10px;
@@ -86,8 +79,29 @@ def home():
             border-radius: 10px;
             padding-left: 20px;
         }
-        select[id="sexo"] {
+        input[id="cep"] {
             height: 50px;
+            width: 500px;
+            font-size: 15px;
+            border-radius: 10px;
+            padding-left: 20px;
+        }
+        select[id="curso escolhido"] {
+            height: 54px;
+            width: 525px;
+            font-size: 15px;
+            border-radius: 10px;
+            padding-left: 20px;
+        }
+        select[id="local de estudo"] {
+            height: 54px;
+            width: 525px;
+            font-size: 15px;
+            border-radius: 10px;
+            padding-left: 20px;
+        }
+        select[id="horário de estudo"] {
+            height: 54px;
             width: 525px;
             font-size: 15px;
             border-radius: 10px;
@@ -103,17 +117,34 @@ def home():
         }
     </style>
     <body>
-        <h1>IFP Brasil</h1>
         <div id="inputs">
+            <img src="{{ url_for('static', filename='ifp-brasil.jpg') }}" id="img1">
+            <img src="{{ url_for('static', filename='rio-prefeitura.jpg') }}" id="img2">
+            <br>
+            <p>
             <input type="text" id="nome" placeholder="NOME COMPLETO">
             <br><p>
             <input type="text" id="E-mail" placeholder="E-MAIL">
             <br><p>
             <input type="text" id="confrimação E-mail" placeholder="CONFIRMAÇÃO E-MAIL">
             <br><p>
-            <input type="number" id="telefone" placeholder="TELEFONE (DDD)xxxxx-xxxx">
+            <label id="DDD" for="data">* (DDD) xxxxx-xxxx</label>
+            <br>
+            <input type="number" id="telefone" placeholder="TELEFONE">
             <br><p>
-            <input type="date" id="data de nascimento" placeholder="DATA DE NASCIMENTO (+18)">
+            <label id="DataDeNascimento" for="data">* DATA DE NASCIMENTO (+18)</label>
+            <br>
+            <input type="date" id="data de nascimento" title="DATA DE NASCIMENTO (+18)">
+            <br><p>
+            <select id="sexo">
+                <option value=".">SEXO</option>
+                <option value="M">MASCULINO</option>
+                <option value="F">FEMININO</option>
+            </select>
+            <br><p>
+            <input type="number" id="cpf" placeholder="CPF">
+            <br><p>
+            <input type="number" id="cep" placeholder="CEP">
             <br><p>
             <select id="curso escolhido">
                 <option value=".">ESCOLHA SEU CURSO</option>
@@ -128,28 +159,18 @@ def home():
                 <option value="PRESENCIAL - CUIDADOR DE IDOSO">PRESENCIAL - CUIDADOR DE IDOSO</option> 
             </select>
             <br><p>
-            <select id="horário de estudo">
-                <option value=".">ESCOLHA SEU HORÁRIO DE ESTUDO</option>
-                <option value="MANHÃ">MANHÃ</option>
-                <option value="TARDE">TARDE</option>]
-                <option value="NOITE">NOITE</option>
-            </select>
-            <br><p>
-            <input type="number" id="cep" placeholder="CEP">
-            <br><p>
-            <select id="bairro">
+            <select id="local de estudo">
                 <option value=".">LOCAL DE ESTUDO</option>
                 <option value="PENHA - CASA NAILS BRASIL">PENHA - CASA NAILS BRASIL</option>
-                <option value="MADUREIRA - IFP">MADUREIRA - IFP</option>]
+                <option value="MADUREIRA - IFP">MADUREIRA - IFP</option>
                 <option value="CENTRO - EMPREENDA.RIO">CENTRO - EMPREENDA.RIO</option>
             </select>
             <br><p>
-            <input type="number" id="cpf" placeholder="CPF">
-            <br><p>
-            <select id="sexo">
-                <option value=".">SEXO</option>
-                <option value="M">MASCULINO</option>
-                <option value="F">FEMININO</option>]
+            <select id="horário de estudo">
+                <option value=".">ESCOLHA SEU HORÁRIO DE ESTUDO</option>
+                <option value="MANHÃ">MANHÃ</option>
+                <option value="TARDE">TARDE</option>
+                <option value="NOITE">NOITE</option>
             </select>
             <br><br><p>
             <button type"submit" id="enviar"><strong>ENVIAR</strong></button>
